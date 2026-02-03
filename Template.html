@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Personal Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f5f7fa;
+        }
+
+        nav {
+            background: #1e272e;
+            color: white;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 280px;
+            height: 180px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-box a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .contact-box a:hover {
+            background: #2ecc71;
+        }
+
+        footer {
+            background: #1e272e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="#terms">Terms</a>
+</nav>
+
+<header id="home">
+    <h1>Welcome to Tiles Home</h1>
+    <p>Simple • Clean • Modern</p>
+</header>
+
+<section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <img src="images/image1.jpeg" alt="Image 1">
+        <img src="images/image2.jpeg" alt="Image 2">
+        <img src="images/image3.jpeg" alt="Image 3">
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-box">
+        <p><strong>Mobile:</strong> +91-9909879654</p>
+        <p><strong>Email:</strong> jayparmar@gmail.com</p>
+
+        <a href="tel:+919909879654">📞 Call Me</a>
+        <a href="mailto:jayparmar@gmail.com">📧 Email Me</a>
+        <a href="https://wa.me/919909879654" target="_blank">💬 WhatsApp</a>
+    </div>
+</section>
+
+<section id="terms">
+    <h2>Terms & Conditions</h2>
+    <p>
+        This website is for personal use only. All images and content are owned by the website
+        owner. Unauthorized copying or reuse is not allowed.
+    </p>
+    <p>
+        By using this website, you agree to these terms and conditions.
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 My Personal Website | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
