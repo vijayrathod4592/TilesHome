@@ -1,158 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Personal Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Royal Tiles Showroom</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            scroll-behavior: smooth;
-            background-color: #f5f7fa;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+    scroll-behavior: smooth;
+}
 
-        nav {
-            background: #1e272e;
-            color: white;
-            padding: 15px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+/* NAVBAR */
+nav {
+    background: #1e272e;
+    padding: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+/* SLIDER */
+.slider {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slide.active {
+    opacity: 1;
+}
+.slider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    text-align: center;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 12px;
+}
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+/* SECTIONS */
+section {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+h2 {
+    text-align: center;
+    color: #2c3e50;
+}
 
-        header {
-            background: linear-gradient(to right, #3498db, #2ecc71);
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
+/* GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 15px;
+}
+.tile-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.tile-card:hover {
+    transform: scale(1.03);
+}
+.tile-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.tile-card p {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
 
-        section {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+.modal img {
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    margin: 5% auto;
+    border-radius: 10px;
+}
+.modal span {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+}
 
-        h2 {
-            text-align: center;
-            color: #2c3e50;
-        }
+/* CONTACT */
+.contact-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+.contact-box a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    background: #3498db;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+.contact-box a:hover {
+    background: #2ecc71;
+}
 
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+/* WHATSAPP FLOAT */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 22px;
+    text-decoration: none;
+}
 
-        .gallery img {
-            width: 280px;
-            height: 180px;
-            object-fit: cover;
-            margin: 10px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
+/* FOOTER */
+footer {
+    background: #1e272e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
 
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .contact-box {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .contact-box a {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 20px;
-            background: #3498db;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-
-        .contact-box a:hover {
-            background: #2ecc71;
-        }
-
-        footer {
-            background: #1e272e;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:600px){
+    .slider { height: 250px; }
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-    <a href="#terms">Terms</a>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<header id="home">
-    <h1>Welcome to Tiles Home</h1>
-    <p>Simple • Clean • Modern</p>
-</header>
+<!-- SLIDER -->
+<div class="slider" id="home">
+    <div class="slide active">
+        <img src="image1.jpeg">
+    </div>
+    <div class="slide">
+        <img src="image2.jpeg">
+    </div>
+    <div class="slide">
+        <img src="image3.jpeg">
+    </div>
+
+    <div class="slider-text">
+        <h1>Royal Tiles Showroom</h1>
+        <p>Elegant Designs • Premium Quality</p>
+    </div>
+</div>
+
+<section id="about">
+<h2>About Us</h2>
+<p style="text-align:center;">
+We provide premium wall and floor tiles for homes, kitchens and commercial spaces.
+Our mission is to bring beauty and durability to your space with trusted quality and service.
+</p>
+</section>
 
 <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-        <img src="image1.jpeg" alt="Image 1">
-        <img src="image2.jpeg" alt="Image 2">
-        <img src="image3.jpeg" alt="Image 3">
+<h2>Our Collection</h2>
+<div class="gallery">
+    <div class="tile-card" onclick="openModal(this)">
+        <img src="image1.jpeg">
+        <p>Wall Tiles</p>
     </div>
+    <div class="tile-card" onclick="openModal(this)">
+        <img src="image2.jpeg">
+        <p>Floor Tiles</p>
+    </div>
+    <div class="tile-card" onclick="openModal(this)">
+        <img src="image3.jpeg">
+        <p>Kitchen Tiles</p>
+    </div>
+</div>
 </section>
+
+<!-- IMAGE MODAL -->
+<div id="modal" class="modal">
+<span onclick="closeModal()">✖</span>
+<img id="modalImg">
+</div>
 
 <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-box">
-        <p><strong>Mobile:</strong> +91-9909879654</p>
-        <p><strong>Email:</strong> jayparmar@gmail.com</p>
+<h2>Contact Us</h2>
+<div class="contact-box">
+<p><strong>Mobile:</strong> +91-9909879654</p>
+<p><strong>Email:</strong> jayparmar@gmail.com</p>
 
-        <a href="tel:+919909879654">📞 Call Me</a>
-        <a href="mailto:jayparmar@gmail.com">📧 Email Me</a>
-        <a href="https://wa.me/919909879654" target="_blank">💬 WhatsApp</a>
-    </div>
-</section>
-
-<section id="terms">
-    <h2>Terms & Conditions</h2>
-    <p>
-        This website is for personal use only. All images and content are owned by the website
-        owner. Unauthorized copying or reuse is not allowed.
-    </p>
-    <p>
-        By using this website, you agree to these terms and conditions.
-    </p>
+<a href="tel:+919909879654">📞 Call Now</a>
+<a href="mailto:jayparmar@gmail.com">📧 Email</a>
+<a href="https://wa.me/919909879654" target="_blank">💬 WhatsApp</a>
+</div>
 </section>
 
 <footer>
-    <p>© 2026 My Personal Website | All Rights Reserved</p>
+<p>© 2026 Royal Tiles Showroom | All Rights Reserved</p>
 </footer>
+
+<a href="https://wa.me/919909879654" class="whatsapp" target="_blank">💬</a>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+setInterval(()=>{
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+},3000);
+
+function openModal(card){
+    document.getElementById("modal").style.display="block";
+    document.getElementById("modalImg").src = card.querySelector("img").src;
+}
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+</script>
 
 </body>
 </html>
-
